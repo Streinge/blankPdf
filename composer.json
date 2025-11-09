@@ -1,0 +1,19 @@
+{
+    "name": "oleso/edif-pdf",
+    "autoload": {
+        "psr-4": {
+            "Oleso\\EdifPdf\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Streinge",
+            "email": "olesof@mail.ru"
+        }
+    ],
+    "require": {
+        "mpdf/mpdf": "^8.2",
+        "setasign/fpdi": "^2.6",
+        "tecnickcom/tcpdf": "^6.10"
+    }
+}
