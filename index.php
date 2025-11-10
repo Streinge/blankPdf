@@ -47,7 +47,8 @@ function blank_megahair(int $x0, $y0, array $order)
 
     $widthLogo = 137;
     $heightLogo = 30;
-    $pdf->Image($imageFile, null, $baseY, $widthLogo, $heightLogo, '', '', 'C');
+    $xAtCenter = round($widthA4 / 2 - $widthLogo / 2);
+    $pdf->Image($imageFile, $xAtCenter, $baseY, $widthLogo, $heightLogo);
     //$pdf->Image($imageFile, $widthA4, $baseY, $widthLogo, $heightLogo);
 
     //$pdf->SetDrawColor(0, 0, 255);
@@ -56,8 +57,15 @@ function blank_megahair(int $x0, $y0, array $order)
 
     $pdf->SetFont('notosansb', '', 12);
     //$pdf->SetTextColor(255, 0, 0);
-    $pdf->SetXY($baseX + 51, $baseY + 35);
-    $pdf->Write(0, "Заказ номер {$orderId}", '', false, 'C');
+    $pdf->SetXY($baseX, $baseY + 35);
+    $pdf->Cell($widthBlank, 0, "Заказ номер {$orderId}", 0, 0, 'C');
+
+    $sizeFont = 10;
+    $pdf->SetFont('notosans', '', $sizeFont);
+    $curY = $pdf->GetY();
+    $pdf->SetXY($baseX, $curY + round(0.5 * $sizeFont));
+    $pdf->Cell($widthBlank, 0, $orderCreatedAt, 0, 0, 'C');
+
 
     $pdf->SetFont('notosansb', '', 10);
     $pdf->SetXY($baseX, $baseY + 54.5);
